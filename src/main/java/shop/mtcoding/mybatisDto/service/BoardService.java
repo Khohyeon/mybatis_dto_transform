@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import shop.mtcoding.mybatisDto.dto.BoardDetailOutDto;
 import shop.mtcoding.mybatisDto.dto.BoardDetailOutDto2;
 import shop.mtcoding.mybatisDto.dto.BoardJoinUserDto;
+import shop.mtcoding.mybatisDto.dto.BoardJoinUserDto2;
 import shop.mtcoding.mybatisDto.model.board.BoardRepository;
 
 @RequiredArgsConstructor
@@ -25,5 +26,11 @@ public class BoardService {
         BoardJoinUserDto boardJoinUserDto = boardRepository.findByIdJoinUser2(id);
         System.out.println("디버그 : " + boardJoinUserDto);
         return boardJoinUserDto;
+    }
+
+    public BoardJoinUserDto2 게시글상세보기3(Integer id) {
+        BoardJoinUserDto2 boardJoinUserDto2 = boardRepository.findByIdJoinUser3(id);
+        System.out.println("디버그 : " + boardJoinUserDto2);
+        return boardJoinUserDto2;
     }
 }

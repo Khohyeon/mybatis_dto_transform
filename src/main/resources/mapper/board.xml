@@ -4,8 +4,17 @@
 <mapper namespace="shop.mtcoding.mybatisDto.model.board.BoardRepository">
 
     <resultMap id="boardJoinUserDto2" type="shop.mtcoding.mybatisDto.dto.BoardJoinUserDto2">
-        <association property="board" resultMap="boardDto" />
-        <association property="user" resultMap="userDto" />
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="createdAt" column="created_at"/>
+        <association property="user" javaType="shop.mtcoding.mybatisDto.dto.BoardJoinUserDto2$UserDto">
+            <id property="id" column="id"/>
+            <result property="username" column="username"/>
+            <result property="password" column="password"/>
+            <result property="email" column="email"/>
+            <result property="createdAt" column="created_at"/>
+        </association>
     </resultMap>
 
     <select id="findByIdJoinUser3" resultMap="boardJoinUserDto2">
