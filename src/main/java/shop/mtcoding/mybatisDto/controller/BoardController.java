@@ -5,9 +5,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import shop.mtcoding.mybatisDto.dto.BoardDetailOutDto2;
-import shop.mtcoding.mybatisDto.dto.BoardJoinUserDto;
-import shop.mtcoding.mybatisDto.dto.BoardJoinUserDto2;
+import shop.mtcoding.mybatisDto.dto.BoardJoinUserDtoV1_2;
+import shop.mtcoding.mybatisDto.dto.BoardJoinUserDtoV2;
+import shop.mtcoding.mybatisDto.dto.BoardJoinUserDtoV3;
 import shop.mtcoding.mybatisDto.service.BoardService;
 
 @RequiredArgsConstructor
@@ -18,20 +18,20 @@ public class BoardController {
 
     @GetMapping("/board/{id}")
     public ResponseEntity<?> detail(@PathVariable Integer id) {
-        BoardDetailOutDto2 boardDetailOutDto2 = boardService.게시글상세보기(id);
-        return ResponseEntity.ok().body(boardDetailOutDto2);
+        BoardJoinUserDtoV1_2 dtoV1 = boardService.게시글상세보기V1(id);
+        return ResponseEntity.ok().body(dtoV1);
     }
 
     @GetMapping("/board/v2/{id}")
     public ResponseEntity<?> detailV2(@PathVariable Integer id) {
-        BoardJoinUserDto boardJoinUserDto = boardService.게시글상세보기2(id);
-        return ResponseEntity.ok().body(boardJoinUserDto);
+        BoardJoinUserDtoV2 dtoV2 = boardService.게시글상세보기V2(id);
+        return ResponseEntity.ok().body(dtoV2);
     }
 
     @GetMapping("/board/v3/{id}")
     public ResponseEntity<?> detailV3(@PathVariable Integer id) {
-        BoardJoinUserDto2 boardJoinUserDto2 = boardService.게시글상세보기3(id);
-        return ResponseEntity.ok().body(boardJoinUserDto2);
+        BoardJoinUserDtoV3 dtoV3 = boardService.게시글상세보기V3(id);
+        return ResponseEntity.ok().body(dtoV3);
     }
 
 }

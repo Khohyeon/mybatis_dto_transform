@@ -2,10 +2,10 @@ package shop.mtcoding.mybatisDto.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import shop.mtcoding.mybatisDto.dto.BoardDetailOutDto;
-import shop.mtcoding.mybatisDto.dto.BoardDetailOutDto2;
-import shop.mtcoding.mybatisDto.dto.BoardJoinUserDto;
-import shop.mtcoding.mybatisDto.dto.BoardJoinUserDto2;
+import shop.mtcoding.mybatisDto.dto.BoardJoinUserDtoV1_1;
+import shop.mtcoding.mybatisDto.dto.BoardJoinUserDtoV1_2;
+import shop.mtcoding.mybatisDto.dto.BoardJoinUserDtoV2;
+import shop.mtcoding.mybatisDto.dto.BoardJoinUserDtoV3;
 import shop.mtcoding.mybatisDto.model.board.BoardRepository;
 
 @RequiredArgsConstructor
@@ -13,23 +13,20 @@ import shop.mtcoding.mybatisDto.model.board.BoardRepository;
 public class BoardService {
 
     private final BoardRepository boardRepository;
-    public BoardDetailOutDto2 게시글상세보기(Integer id) {
-       BoardDetailOutDto boardDetailOutDto = boardRepository.findByIdJoinUser(id);
-       System.out.println("디버그 : " + boardDetailOutDto);
-        BoardDetailOutDto2 boardDetailOutDto2 =
-                new BoardDetailOutDto2(boardDetailOutDto);
-        System.out.println("디버그 : " + boardDetailOutDto2);
-        return boardDetailOutDto2;
+    public BoardJoinUserDtoV1_2 게시글상세보기V1(Integer id) {
+        BoardJoinUserDtoV1_1 boardJoinUserDtoV1_1 = boardRepository.findByIdJoinUserV1(id);
+        BoardJoinUserDtoV1_2 boardJoinUserDtoV1_2 = new BoardJoinUserDtoV1_2(boardJoinUserDtoV1_1);
+        return boardJoinUserDtoV1_2;
     }
 
-    public BoardJoinUserDto 게시글상세보기2(Integer id) {
-        BoardJoinUserDto boardJoinUserDto = boardRepository.findByIdJoinUser2(id);
+    public BoardJoinUserDtoV2 게시글상세보기V2(Integer id) {
+        BoardJoinUserDtoV2 boardJoinUserDto = boardRepository.findByIdJoinUserV2(id);
         System.out.println("디버그 : " + boardJoinUserDto);
         return boardJoinUserDto;
     }
 
-    public BoardJoinUserDto2 게시글상세보기3(Integer id) {
-        BoardJoinUserDto2 boardJoinUserDto2 = boardRepository.findByIdJoinUser3(id);
+    public BoardJoinUserDtoV3 게시글상세보기V3(Integer id) {
+        BoardJoinUserDtoV3 boardJoinUserDto2 = boardRepository.findByIdJoinUserV3(id);
         System.out.println("디버그 : " + boardJoinUserDto2);
         return boardJoinUserDto2;
     }

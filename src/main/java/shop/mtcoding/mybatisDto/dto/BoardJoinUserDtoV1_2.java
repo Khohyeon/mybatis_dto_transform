@@ -9,14 +9,14 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class BoardDetailOutDto2 {
+public class BoardJoinUserDtoV1_2 {
     private Integer id;
     private String title;
     private String content;
     private UserDto user; // json 리턴될때 이름이 훨신이쁘기때문에 user 씀
     private Timestamp createdAt;
 
-    public BoardDetailOutDto2(BoardDetailOutDto board) {
+    public BoardJoinUserDtoV1_2(BoardJoinUserDtoV1_1 board) {
         this.id = board.getId();
         this.title = board.getTitle();
         this.content = board.getContent();

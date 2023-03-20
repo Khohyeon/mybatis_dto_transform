@@ -3,12 +3,13 @@
 
 <mapper namespace="shop.mtcoding.mybatisDto.model.board.BoardRepository">
 
-    <resultMap id="boardJoinUserDto2" type="shop.mtcoding.mybatisDto.dto.BoardJoinUserDto2">
+<!--    Version 3-->
+    <resultMap id="boardJoinUserDtoV3" type="shop.mtcoding.mybatisDto.dto.BoardJoinUserDtoV3">
         <id property="id" column="id"/>
         <result property="title" column="title"/>
         <result property="content" column="content"/>
         <result property="createdAt" column="created_at"/>
-        <association property="user" javaType="shop.mtcoding.mybatisDto.dto.BoardJoinUserDto2$UserDto">
+        <association property="user" javaType="shop.mtcoding.mybatisDto.dto.BoardJoinUserDtoV3$UserDto">
             <id property="id" column="id"/>
             <result property="username" column="username"/>
             <result property="password" column="password"/>
@@ -17,21 +18,22 @@
         </association>
     </resultMap>
 
-    <select id="findByIdJoinUser3" resultMap="boardJoinUserDto2">
+    <select id="findByIdJoinUserV3" resultMap="boardJoinUserDtoV3">
         select *
         from board_tb b inner join user_tb u
         on b.user_id = u.id
         where b.id = #{id}
     </select>
 
-    <resultMap id="boardDto" type="shop.mtcoding.mybatisDto.dto.BoardDto">
+<!--    Version 2    -->
+    <resultMap id="boardDto" type="shop.mtcoding.mybatisDto.dto.BoardJoinUserDtoV2$BoardDto">
         <id property="id" column="id"/>
         <result property="title" column="title"/>
         <result property="content" column="content"/>
         <result property="createdAt" column="created_at"/>
     </resultMap>
 
-    <resultMap id="userDto" type="shop.mtcoding.mybatisDto.dto.UserDto">
+    <resultMap id="userDto" type="shop.mtcoding.mybatisDto.dto.BoardJoinUserDtoV2$UserDto">
         <id property="id" column="id"/>
         <result property="username" column="username"/>
         <result property="password" column="password"/>
@@ -39,19 +41,20 @@
         <result property="createdAt" column="created_at"/>
     </resultMap>
 
-    <resultMap id="boardJoinUserDto" type="shop.mtcoding.mybatisDto.dto.BoardJoinUserDto">
+    <resultMap id="boardJoinUserDtoV2" type="shop.mtcoding.mybatisDto.dto.BoardJoinUserDtoV2">
         <association property="board" resultMap="boardDto" />
         <association property="user" resultMap="userDto" />
     </resultMap>
 
-    <select id="findByIdJoinUser2" resultMap="boardJoinUserDto">
+    <select id="findByIdJoinUserV2" resultMap="boardJoinUserDtoV2">
         select *
         from board_tb b inner join user_tb u
         on b.user_id = u.id
         where b.id = #{id}
     </select>
 
-    <select id="findByIdJoinUser" resultType="shop.mtcoding.mybatisDto.dto.BoardDetailOutDto">
+<!--    Version 1-->
+    <select id="findByIdJoinUserV1" resultType="shop.mtcoding.mybatisDto.dto.BoardJoinUserDtoV1_1">
         select b.*,
         u.id user_id,
         u.username user_username,

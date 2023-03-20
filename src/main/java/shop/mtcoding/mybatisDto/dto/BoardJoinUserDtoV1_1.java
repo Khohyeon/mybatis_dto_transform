@@ -7,7 +7,7 @@ import lombok.ToString;
 import java.sql.Timestamp;
 
 @Getter @Setter @ToString
-public class BoardDetailOutDto {
+public class BoardJoinUserDtoV1_1 {
 
     // Board
     private Integer id;
