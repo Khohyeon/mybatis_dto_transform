@@ -1,19 +1,17 @@
 package shop.mtcoding.mybatisDto.model.board;
 
 
-import java.util.List;
-
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
+import shop.mtcoding.mybatisDto.dto.BoardDetailOutDto;
 
+import java.util.List;
 
 
 @Mapper
 public interface BoardRepository {
-    public int insert(@Param("title") String title, @Param("content") String content,
-                      @Param("userId") int userId);
+    public int insert(Board board);
 
-    public int updateById(@Param("id") int id, @Param("title") String title, @Param("content") String content);
+    public int updateById(Board board);
 
     public int deleteById(int id);
 
@@ -22,9 +20,8 @@ public interface BoardRepository {
     public Board findById(int id);
 
     public List<Board> findList(int id);
-//
-//    public List<BoardMainRespDto> findAllWithUser();
-//
-//    public BoardDetailRespDto findByIdWithUser(int id);
+
+    public BoardDetailOutDto findByIdJoinUser(int id);
+
 
 }
